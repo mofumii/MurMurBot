@@ -1,4 +1,4 @@
-# koshka-utka-bot/bot.py
+# animal-bot/bot.py
 # author: Ptmasher
 # version 1.0
 
@@ -9,7 +9,7 @@ import random
 import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, FSInputFile
 
 
 # Set API token
@@ -26,12 +26,12 @@ async def command_start_handler(message: Message):
     """Display welcome message"""
 
     await message.answer("""
-Привет! Этот бот отправляет случайные фотографии кошек и змей.\n
+Привет! Этот бот отправляет случайные фотографии кошек, змей и уток.\n
                          
 Список доступный команд:
 /duck - фотка случайной утки
 /cat - фотка случайной кошки
-
+/snake - фотка питончика
     """)
 
 @dp.message(Command("duck"))
@@ -53,6 +53,17 @@ async def command_cat_handler(message: Message):
     image_url = f"https://cataas.com/cat?timestamp={timestamp}"
     # Send cat picture
     await message.answer_photo(image_url)
+
+@dp.message(Command("snake"))
+async def command_snake_handler(message: Message):
+    """Send random snake picture"""
+
+    # Get snake picture
+    pic_num = random.randint(1, 6)
+    pic_path = f"snakes/python{pic_num}.jpg"
+    photo = FSInputFile(pic_path)
+    # Send snake to user
+    await message.answer_photo(photo=photo, caption="СЛАВА PYTHON БОЖЕ ХРАНИ ПИТОНЧИКОВ")
 
 async def main() -> None:
     """Run bot"""

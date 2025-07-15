@@ -1,11 +1,11 @@
-# Утка Кошка бот
+# Утка Кошка Питончик бот
 
-Бот на aiogram отправляющий рандомную фотку утки или кошки
+Бот на aiogram отправляющий рандомную фотку утки, питончика и кошки
 
 - Склонируйте и перейдите в репозиторий
 ```bash
-git clone https://github.com/ptmasher/koshka-utka-bot
-cd koshka-utka bot
+git clone https://github.com/ptmasher/animal-bot
+cd animal-bot
 ```
 
 - Установите зависимости
