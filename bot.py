@@ -89,7 +89,7 @@ async def command_snake_handler(message: Message):
     """Send random snake picture"""
 
     # Get snake picture
-    pic_num = random.randint(1, 61)
+    pic_num = random.randint(1, 19)
     pic_path = f"snakes/python{pic_num}.jpg"
     photo = FSInputFile(pic_path)
     # Send snake to user
