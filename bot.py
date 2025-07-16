@@ -1,6 +1,6 @@
 # animal-bot/bot.py
 # author: Ptmasher
-# version 1.0
+# version 2.0 (FEMBOYS)
 
 import os
 from dotenv import load_dotenv
@@ -11,6 +11,7 @@ from functools import wraps
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message, FSInputFile
+import r34_api
 
 
 # Set API token
@@ -63,7 +64,7 @@ async def command_start_handler(message: Message):
 
 @dp.message(Command("duck"))
 @anti_spam(COMMAND_COOLDOWN)
-async def command_snake_handler(message: Message):
+async def command_duck_handler(message: Message):
     """Send random duck picture"""
 
     # Get random duck 
@@ -95,6 +96,29 @@ async def command_snake_handler(message: Message):
     # Send snake to user
     await message.answer_photo(photo=photo, caption="СЛАВА PYTHON БОЖЕ ХРАНИ ПИТОНЧИКОВ")
  
+@dp.message(Command("femboy"))
+@anti_spam(COMMAND_COOLDOWN)
+async def command_femboy_handler(message: Message):
+    """Send random femboy picture"""
+    
+    tags = ["femboy", "-video", "-pregnancy", "-ai_generated"]
+    image = r34_api.get_post(tags)
+    # Send cat picture
+    await message.answer_photo(image)
+
+@dp.message(Command("r34"))
+@anti_spam(COMMAND_COOLDOWN)
+async def command_femboy_handler(message: Message):
+    """Send random picture from rule34.xxx"""
+    
+    # Example tags
+    tags = ["-pregnancy", "-homosexual", "-gay",
+            "-ai_generated", "-furry", "-fur",
+            "female", "pussy"]
+    image = r34_api.get_post(tags)
+    # Send cat picture
+    await message.answer_photo(image)
+
 async def main() -> None:
     """Run bot"""
     print(os.getcwd())
