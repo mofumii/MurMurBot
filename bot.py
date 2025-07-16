@@ -60,6 +60,7 @@ async def command_start_handler(message: Message):
 /duck - фотка случайной утки
 /cat - фотка случайной кошки
 /snake - фотка питончика
+/femboy, /r34 - ...
     """)
 
 @dp.message(Command("duck"))
@@ -108,7 +109,7 @@ async def command_femboy_handler(message: Message):
 
 @dp.message(Command("r34"))
 @anti_spam(COMMAND_COOLDOWN)
-async def command_femboy_handler(message: Message):
+async def command_r34_handler(message: Message):
     """Send random picture from rule34.xxx"""
     
     # Example tags
