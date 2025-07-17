@@ -1,2 +1,3 @@
 python-dotenv
 aiogram
+rule34Py
