@@ -4,7 +4,7 @@
 
 - Склонируйте и перейдите в репозиторий
 ```bash
-git clone https://github.com/mufomii/animal-bot
+git clone https://github.com/mofumii/animal-bot
 cd animal-bot
 ```
 
