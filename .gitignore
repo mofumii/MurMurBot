@@ -202,6 +202,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# Bot stuff
 bot.log
-
+user_points.json
 .DS_Store
