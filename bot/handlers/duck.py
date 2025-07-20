@@ -1,14 +1,19 @@
+# animal-bot/bot/handlers/duck.py
+# author: Ptmasher
+# version 1.0
+
+
 from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command
-from utils import utils
+from utils import decorators
 import random
 
 router = Router()
 
 @router.message(Command("duck"))
-@utils.anti_spam(utils.COMMAND_COOLDOWN)
-@utils.check_balance(25)
+@decorators.anti_spam(decorators.COMMAND_COOLDOWN)
+@decorators.check_balance(25)
 async def command_duck_handler(message: Message):
     """Send random duck picture"""
 

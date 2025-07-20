@@ -1,6 +1,7 @@
-# animal-bot/r34_api.py
+# animal-bot/bot/utils/r34_api.py
 # author: Ptmasher
 # version 1.0
+
 
 from rule34Py import rule34Py
 import random

@@ -1,3 +1,8 @@
+# animal-bot/bot/handlers/
+# author: Ptmasher
+# version 1.0
+
+
 import os
 from dotenv import load_dotenv
 

@@ -1,12 +1,17 @@
+# animal-bot/bot/handlers/start.py
+# author: Ptmasher
+# version 1.0
+
+
 from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command
-from utils import utils
+from utils import decorators
 
 router = Router()
 
 @router.message(Command("start"))
-@utils.anti_spam(utils.COMMAND_COOLDOWN)
+@decorators.anti_spam(decorators.COMMAND_COOLDOWN)
 async def start_handler(message: Message):
     """Display welcome message"""
 

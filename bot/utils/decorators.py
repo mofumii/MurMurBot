@@ -1,3 +1,8 @@
+# animal-bot/bot/utils/decorators.py
+# author: Ptmasher
+# version 1.0
+
+
 from aiogram.types import Message
 from functools import wraps
 import time
@@ -18,7 +23,7 @@ def check_balance(required_points: int):
                 await message.reply("❌ Could not identify user.")
                 return
             
-            points = db.user_points[user_id]
+            points = await db.get_user_points(message)
             if points < required_points:
                 await message.reply(
                     f"❌ Недостаточно поинтов."
@@ -36,7 +41,7 @@ def anti_spam(delay: int):
     def decorator(handler):
         @wraps(handler)
         async def wrapper(message: Message, *args, **kwargs):
-            user_id = message.from_user.id
+            user_id = get_user_id(message)
             now = time.time()
 
             # Check if user is on cooldown

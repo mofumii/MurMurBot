@@ -1,14 +1,19 @@
+# animal-bot/bot/handlers/snake.py
+# author: Ptmasher
+# version 1.0
+
+
 from aiogram import Router
 from aiogram.types import Message, FSInputFile
 from aiogram.filters import Command
-from utils import utils
+from utils import decorators
 import random
 
 router = Router()
 
 @router.message(Command("snake"))
-@utils.anti_spam(utils.COMMAND_COOLDOWN)
-@utils.check_balance(50)
+@decorators.anti_spam(decorators.COMMAND_COOLDOWN)
+@decorators.check_balance(50)
 async def command_snake_handler(message: Message):
     """Send random snake picture"""
 

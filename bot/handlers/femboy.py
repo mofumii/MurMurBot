@@ -1,13 +1,19 @@
+# animal-bot/bot/handlers/femboy.py
+# author: Ptmasher
+# version 1.0
+
+
 from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command
-from utils import utils, r34_api
+from utils import decorators
+from utils import r34_api
 
 router = Router()
 
 @router.message(Command("femboy"))
-@utils.anti_spam(utils.COMMAND_COOLDOWN)
-@utils.check_balance(999)
+@decorators.anti_spam(decorators.COMMAND_COOLDOWN)
+@decorators.check_balance(999)
 async def femboy_handler(message: Message):
     """Send random femboy picture"""
 
