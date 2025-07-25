@@ -9,3 +9,4 @@ from .start import *
 from .stats import *
 from .ban import*
 from .balance import *
+from .captcha import *

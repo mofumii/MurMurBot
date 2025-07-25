@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 db = DatabaseManager()
 
 async def main():
+    dp.include_router(captcha.router)
     dp.include_router(ban.router)
     dp.include_router(register.router)
     dp.include_router(start.router)

@@ -1,6 +1,17 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2025-07-25
+
+### Added
+- Captcha for new users in group chats. Passed by clicking inline button
+
+### Changed
+- handlers/stats.py Sends default profile picture if user does not have one
+
+### Fixed
+- utils/user.py get_user_pfp Error handling
+
 ## [1.1.2] - 2025-07-25
 
 ### Added
