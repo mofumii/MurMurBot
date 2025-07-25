@@ -1,5 +1,5 @@
 # animal-bot/bot/handlers/cat.py
-# author: Ptmasher
+# author: Mofumii
 # version 1.0
 
 

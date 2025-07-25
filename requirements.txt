@@ -2,3 +2,4 @@ aiogram
 aiosqlite
 python-dotenv
 rule34Py
+redis

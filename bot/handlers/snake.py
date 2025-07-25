@@ -1,5 +1,5 @@
 # animal-bot/bot/handlers/snake.py
-# author: Ptmasher
+# author: Mofumii
 # version 1.0
 
 

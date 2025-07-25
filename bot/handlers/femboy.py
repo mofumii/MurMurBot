@@ -1,5 +1,5 @@
 # animal-bot/bot/handlers/femboy.py
-# author: Ptmasher
+# author: Mofumii
 # version 1.0
 
 

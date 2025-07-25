@@ -6,8 +6,10 @@
 from aiogram.types import Message
 from functools import wraps
 import time
-from db import db
+from db.db import DatabaseManager
 
+
+db = DatabaseManager()
 
 COMMAND_COOLDOWN = 10
 

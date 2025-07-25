@@ -204,5 +204,7 @@ __marimo__/
 
 # Bot stuff
 bot.log
+data.db
 user_points.json
 .DS_Store
+dump.rdb

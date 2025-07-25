@@ -1,5 +1,5 @@
-# animal-bot/bot/handlers/
-# author: Ptmasher
+# animal-bot/bot/config.py
+# author: Mofumii
 # version 1.0
 
 
