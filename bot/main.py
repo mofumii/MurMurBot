@@ -5,7 +5,7 @@
 
 import asyncio
 from bot import bot, dp
-from handlers import cat, duck, snake, r34, femboy, balance, message_reward, start, stats, register
+from handlers import *
 from db import db
 from db.db import DatabaseManager
 import logging
@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 db = DatabaseManager()
 
 async def main():
+    dp.include_router(ban.router)
     dp.include_router(register.router)
     dp.include_router(start.router)
     dp.include_router(cat.router)

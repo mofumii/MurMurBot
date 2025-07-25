@@ -1,6 +1,17 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2025-07-25
+
+### Added
+- /ban command to ban users in chat.
+- /stats can now show profiles of other users
+- handlers/__init__.py added.
+
+### Changed
+
+### Fixed
+
 ## [1.1] - 2025-07-24
 
 ### Added
