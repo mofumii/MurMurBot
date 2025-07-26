@@ -1,14 +1,17 @@
 # animal-bot/bot/handlers/stats.py
 # author: Mofumii
-# version 1.1.3
+# version 1.1.4
 
 from aiogram import Router, Bot
-from aiogram.types import Message, InputFile
+from aiogram.types import Message
 from aiogram.filters import Command
+import logging
 from utils import motivation
-from utils.user import get_user_pfp
+from utils.user import fetch_user_avatar
 from utils.decorators import anti_spam, COMMAND_COOLDOWN
 from db.db import DatabaseManager
+
+logger = logging.getLogger(__name__)
 
 db = DatabaseManager()
 
@@ -32,15 +35,10 @@ async def stats_handler(message: Message, bot: Bot):
         )
         return
     
-    try:
-        pfp = await get_user_pfp(user_id, bot)
-    except Exception:
-        await message.reply("Произошла ошибка при получении аватарки пользователя.")
-        return
-    
+    pfp = await fetch_user_avatar(user_id, bot, message)
+
     if not pfp:
-        blank_pfp = "blank-pfp.jpg"
-        pfp = InputFile(blank_pfp)
+        return
 
     user = await bot.get_chat(user_id)
     user_name = user.full_name
@@ -56,7 +54,8 @@ async def stats_handler(message: Message, bot: Bot):
         f"🍬 Поинты: {user_points}\n\n"
         f"<i>{motivational_phrase}! 🌟</i>"
     )
-    if pfp:
+
+    if user_name and user_points and motivational_phrase and user_data:
         await message.answer_photo(pfp, caption=caption)
     else:
         await message.reply("Произошла ошибка с нашей стороны. Повторите позже!")

@@ -12,15 +12,6 @@ from utils.decorators import anti_spam, COMMAND_COOLDOWN
 from db.db import DatabaseManager
 import redis
 
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler("bot.log"),  # Logs in file
-        logging.StreamHandler()          # Logs in console
-    ]
-)
 logger = logging.getLogger(__name__)
 
 pool = redis.ConnectionPool(

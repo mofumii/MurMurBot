@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.1.4] - 2025-07-26
+## Fixed
+- utils/user.py fetch_user_avatar Error handling if user avatar not found and blank pfp not found
+
+
 ## [1.1.3] - 2025-07-25
 
 ### Added
@@ -10,7 +15,7 @@ All notable changes to this project will be documented in this file.
 - handlers/stats.py Sends default profile picture if user does not have one
 
 ### Fixed
-- utils/user.py get_user_pfp Error handling
+- utils/user.py get_user_pfp Error handling: Returns exception if cannot get user avatar.
 
 ## [1.1.2] - 2025-07-25
 
@@ -18,10 +23,6 @@ All notable changes to this project will be documented in this file.
 - /ban command to ban users in chat.
 - /stats can now show profiles of other users
 - handlers/__init__.py added.
-
-### Changed
-
-### Fixed
 
 ## [1.1] - 2025-07-24
 
@@ -37,5 +38,3 @@ All notable changes to this project will be documented in this file.
 
 - Bot parsemode set to HTML
 - requirements.txt updated
-
-### Fixed
