@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [HOTFIX 1.1.5] - 2025-07-26
+## Changed
+- utils/user.py fetch_user_avatar removed because it caused errors
+
+## Fixed
+- handlers/stats.py stats_handler loads user avatar properly and notifies user if error occured
+
 ## [1.1.4] - 2025-07-26
 ## Fixed
 - utils/user.py fetch_user_avatar Error handling if user avatar not found and blank pfp not found

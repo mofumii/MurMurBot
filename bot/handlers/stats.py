@@ -3,11 +3,12 @@
 # version 1.1.4
 
 from aiogram import Router, Bot
-from aiogram.types import Message
+from aiogram.types import Message, FSInputFile
+import os
 from aiogram.filters import Command
 import logging
 from utils import motivation
-from utils.user import fetch_user_avatar
+from utils.user import get_user_pfp
 from utils.decorators import anti_spam, COMMAND_COOLDOWN
 from db.db import DatabaseManager
 
@@ -35,7 +36,23 @@ async def stats_handler(message: Message, bot: Bot):
         )
         return
     
-    pfp = await fetch_user_avatar(user_id, bot, message)
+    try:
+        pfp = await get_user_pfp(user_id, bot)
+    except Exception:
+        await message.reply("Произошла ошибка при получении аватарки пользователя.")
+        return
+    
+    if not pfp:
+        blank_pfp_path = "blank-pfp.jpg"
+        if not os.path.exists(blank_pfp_path):
+            await message.reply("Невозможно загрузить фотографию профиля.")
+            return
+        
+        try:    
+            pfp = FSInputFile(blank_pfp_path)
+        except Exception:
+            await message.reply("Возникла непредвиденная ошибка. Повторите запрос позже.")
+            return
 
     if not pfp:
         return

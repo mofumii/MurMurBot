@@ -23,23 +23,3 @@ async def get_user_pfp(user_id: int, bot: Bot):
     
     except Exception:
         raise
-
-
-async def fetch_user_avatar(user_id: int, bot: Bot, message: Message):
-    try:
-        pfp = await get_user_pfp(user_id, bot)
-    except Exception:
-        await message.reply("Произошла ошибка при получении аватарки пользователя.")
-        return
-    
-    if not pfp:
-        blank_pfp_path = "blank-pfp.jpg"
-        if not os.path.exists(blank_pfp_path):
-            await message.reply("Невозможно загрузить фотографию профиля.")
-            return
-        
-        try:    
-            pfp = FSInputFile(blank_pfp_path)
-        except Exception:
-            await message.reply("Возникла непредвиденная ошибка. Повторите запрос позже.")
-            return
