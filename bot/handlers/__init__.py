@@ -10,3 +10,4 @@ from .stats import *
 from .ban import*
 from .balance import *
 from .captcha import *
+from .chatbot import *
