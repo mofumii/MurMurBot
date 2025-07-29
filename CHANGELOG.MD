@@ -1,6 +1,16 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2025-07-29
+### Added
+- handlers/captcha.py Adds new users to the databaser after completing captcha.
+
+### Changed
+- requirements.txt updated.
+
+### Removed
+- db/db.py get_user_points dublicate removed.
+
 ## [1.2] - 2025-07-26
 ### Added
 - handlers/chatbot.py Chatbot with a friendly persona who talks to chat members.

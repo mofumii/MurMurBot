@@ -18,4 +18,5 @@ async def chatbot_handler(message: Message):
     # Remove "мур" from message
     _, user_prompt = message.text.lower().split("мур")
     reply = gpt.get_answer(user_id, user_prompt.strip())
+    # Setting parse mode MARKDOWN to display the message correctly
     await message.reply(reply, parse_mode=ParseMode.MARKDOWN)

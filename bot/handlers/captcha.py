@@ -6,8 +6,11 @@ from aiogram import Router, F
 from aiogram.types import ChatMemberUpdated, ChatPermissions
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.types import CallbackQuery
-from bot import bot
 from aiogram.filters import ChatMemberUpdatedFilter, JOIN_TRANSITION
+from bot import bot
+from db.db import DatabaseManager
+
+db = DatabaseManager()
 
 router = Router()
 
@@ -59,6 +62,8 @@ async def on_verify(callback: CallbackQuery):
         user_id=user_id_from_button,
         permissions=ChatPermissions(can_send_messages=True)
     )
+
+    db.get_user_points(callback.message)
 
     # Delete captcha message
     await bot.delete_message(chat_id=callback.message.chat.id,

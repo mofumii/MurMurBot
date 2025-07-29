@@ -36,36 +36,12 @@ class DatabaseManager:
             ''')
                 
                 await db.commit()
-
-    async def get_user_points(message: Message):
-        """Returns user's points from balance"""
-        user_id = message.from_user.id
-        chat_id = message.chat.id
-
-        if os.path.exists(DB_PATH):
-            try:
-                async with aiosqlite.connect(DB_PATH) as db:
-                    await db.execute(
-                        "INSERT OR IGNORE INTO users (userId, chatId, points)" \
-                        "VALUES (?, ?, 0)",
-                        (user_id, chat_id)
-                    )
-
-                    await db.commit()
-
-                    cursor = await db.execute(
-                        "SELECT points FROM users WHERE userId=? AND chatId=?"
-                        , (user_id, chat_id))
-                    row = await cursor.fetchone()
-                    if row is not None:
-                        return row[0]
-                    else:
-                        return 0
-            except Exception:
-                return
             
     async def get_user_points(self, message: Message):
-        """Returns user's points from balance"""
+        """
+        Returns user's points from balance
+        Adds user to the db if user does not exists
+        """
         user_id = message.from_user.id
         chat_id = message.chat.id
 
@@ -73,7 +49,7 @@ class DatabaseManager:
             try:
                 async with aiosqlite.connect(DB_PATH) as db:
                     await db.execute(
-                        "INSERT OR IGNORE INTO users (userId, chatId, points)" \
+                        "INSERT OR IGNORE INTO users (userId, chatId, points)"
                         "VALUES (?, ?, 0)",
                         (user_id, chat_id)
                     )
