@@ -72,7 +72,7 @@ async def stats_handler(message: Message, bot: Bot):
         f"<i>{motivational_phrase}! 🌟</i>"
     )
 
-    if user_name and user_points and motivational_phrase and user_data:
+    if user_name and user_points is not None and motivational_phrase and user_data:
         await message.answer_photo(pfp, caption=caption)
     else:
         await message.reply("Произошла ошибка с нашей стороны. Повторите позже!")
