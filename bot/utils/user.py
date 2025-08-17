@@ -1,11 +1,5 @@
-# animal-bot/bot/utils/user.py
-# author: Mofumii
-# version 1.1.4
-
 from aiogram import Bot
-from aiogram.types import Message, FSInputFile
 import logging
-import os
 
 logger = logging.getLogger(__name__)
 

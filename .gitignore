@@ -208,3 +208,5 @@ data.db
 user_points.json
 .DS_Store
 dump.rdb
+snakes/
+snake.py

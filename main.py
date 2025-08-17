@@ -1,27 +1,22 @@
-# animal-bot/bot/main.py
-# author: Mofumii
-# version 1.0
-
-
 import asyncio
-from bot import bot, dp
-from handlers import *
-from db import db
-from db.db import DatabaseManager
 import logging
-import subprocess
+
+from bot.bot import bot, dp
+from bot.db.db import DatabaseManager
+from bot.handlers import *
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler("bot.log"),  # Logs in file
-        logging.StreamHandler()          # Logs in console
-    ]
+        logging.FileHandler("bot.log"),
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger(__name__)
 
 db = DatabaseManager()
+
 
 async def main():
     dp.include_router(chatbot.router)
@@ -32,17 +27,16 @@ async def main():
     dp.include_router(cat.router)
     dp.include_router(stats.router)
     dp.include_router(duck.router)
-    dp.include_router(snake.router)
     dp.include_router(r34.router)
     dp.include_router(femboy.router)
     dp.include_router(balance.router)
     dp.include_router(message_reward.router)
 
     await db.init_db()
-    await dp.start_polling(bot)
+    await bot.delete_webhook(drop_pending_updates=True)
+    await dp.start_polling(bot, allowed_updates=None)
+
 
 if __name__ == "__main__":
-    """Run the bot"""
-    process = subprocess.Popen(['redis-server'])
     asyncio.run(db.init_db())
     asyncio.run(main())

@@ -1,25 +1,22 @@
-# animal-bot/bot/handlers/balance.py
-# author: Mofumii, kefiiiir
-# version 1.0
-
-
 from aiogram import Router
-from aiogram.types import Message
 from aiogram.filters import Command
-from utils import decorators
-from db.db import DatabaseManager
+from aiogram.types import Message
+
+from bot.db.db import DatabaseManager
+from bot.utils import decorators
 
 router = Router()
 db = DatabaseManager()
+
 
 @router.message(Command("balance"))
 @decorators.anti_spam(decorators.COMMAND_COOLDOWN)
 async def command_balance_handler(message: Message):
     """Display user's balance"""
 
-    points = await db.get_user_points(message=message)
+    user_id = message.from_user.id
+    chat_id = message.chat.id
+    points = await db.get_user_points(user_id, chat_id)
     username = message.from_user.full_name or message.from_user.first_name
-    
-    await message.reply(
-        f"📊 у {username} {str(points)} Пойнтсев!"
-    )
+
+    await message.reply(f"📊 у {username} {str(points)} Пойнтсев!")

@@ -1,7 +1,28 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [HOTFIX 1.2.2] = 2025-07-30
+## [1.3] - 2025-08/15
+- A lot of stuff changed actually
+
+### Added
+- bot/handlers/__init__.py __all__ added
+- bot/config load_env_credentials added
+
+### Changed
+- bot/handlers/register.py Redis replaced with dictionaries 
+- bot/db/db.py/get_user_points Parameter "message" replaced with "user_id" and "chat_id"
+- All imports changed to absoule Path
+
+### Fixed
+- Attempt to buy a picture sometimes did not send picture but deducted points from balance. Fixed in bot/utils/decorators.py and all handlers
+
+### Removed
+- Redis is removed from requirements
+- Path/Author/Version header removed from all files
+- Snakes and bot/handlers/snake.py removed. (take up too much space)
+- Unnecessary imports removed
+
+## [HOTFIX 1.2.2] - 2025-07-30
 ### Fixed
 - handlers/stats.py stats_handler Did not send stats to user if user points were 0 now fixed
 

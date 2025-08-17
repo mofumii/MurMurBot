@@ -1,7 +1,3 @@
-# animal-bot/db/db.py
-# author: Mofumii, kefiiiir
-# version 1.1
-
 import os
 from aiogram.types import Message
 import aiosqlite
@@ -37,13 +33,11 @@ class DatabaseManager:
                 
                 await db.commit()
             
-    async def get_user_points(self, message: Message):
+    async def get_user_points(self, user_id: int, chat_id: int):
         """
-        Returns user's points from balance
-        Adds user to the db if user does not exists
+        Returns user's points from balance.
+        Adds user to the db if user does not exist
         """
-        user_id = message.from_user.id
-        chat_id = message.chat.id
 
         if os.path.exists(DB_PATH):
             try:

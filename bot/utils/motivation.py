@@ -32,6 +32,3 @@ def get_random_phrase(name):
     ]
     
     return random.choice(phrases)
-
-if __name__ == "__main__":
-    print(get_random_phrase())

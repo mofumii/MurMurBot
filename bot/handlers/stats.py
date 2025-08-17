@@ -1,16 +1,14 @@
-# animal-bot/bot/handlers/stats.py
-# author: Mofumii
-# version 1.1.4
-
-from aiogram import Router, Bot
-from aiogram.types import Message, FSInputFile
-import os
-from aiogram.filters import Command
 import logging
-from utils import motivation
-from utils.user import get_user_pfp
-from utils.decorators import anti_spam, COMMAND_COOLDOWN
-from db.db import DatabaseManager
+import os
+
+from aiogram import Bot, Router
+from aiogram.filters import Command
+from aiogram.types import FSInputFile, Message
+
+from bot.db.db import DatabaseManager
+from bot.utils import motivation
+from bot.utils.decorators import COMMAND_COOLDOWN, anti_spam
+from bot.utils.user import get_user_pfp
 
 logger = logging.getLogger(__name__)
 
@@ -18,37 +16,38 @@ db = DatabaseManager()
 
 router = Router()
 
+
 @router.message(Command("stats"))
 @anti_spam(COMMAND_COOLDOWN)
 async def stats_handler(message: Message, bot: Bot):
-
     if message.reply_to_message:
         user_id = message.reply_to_message.from_user.id
     else:
         user_id = message.from_user.id
-    
+
+    chat_id = message.chat.id
+
     user_data = await db.get_user(user_id)
 
     if not user_data:
         await message.reply(
-        "Пользователь еще не зарегестрирован. " \
-        "Регистрация доступна в ЛС с ботом"
+            "Пользователь еще не зарегестрирован. Регистрация доступна в ЛС с ботом"
         )
         return
-    
+
     try:
         pfp = await get_user_pfp(user_id, bot)
     except Exception:
         await message.reply("Произошла ошибка при получении аватарки пользователя.")
         return
-    
+
     if not pfp:
         blank_pfp_path = "blank-pfp.jpg"
         if not os.path.exists(blank_pfp_path):
             await message.reply("Невозможно загрузить фотографию профиля.")
             return
-        
-        try:    
+
+        try:
             pfp = FSInputFile(blank_pfp_path)
         except Exception:
             await message.reply("Возникла непредвиденная ошибка. Повторите запрос позже.")
@@ -59,7 +58,7 @@ async def stats_handler(message: Message, bot: Bot):
 
     user = await bot.get_chat(user_id)
     user_name = user.full_name
-    user_points = await db.get_user_points(message)
+    user_points = await db.get_user_points(user_id, chat_id)
     motivational_phrase = motivation.get_random_phrase(user_name)
 
     caption = (

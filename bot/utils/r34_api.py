@@ -1,21 +1,17 @@
-# animal-bot/bot/utils/r34_api.py
-# author: Ptmasher
-# version 1.0
-
-
-from rule34Py import rule34Py
 import random
 
+from rule34Py import rule34Py
 
-def get_post(TAGS):
+
+def get_post(tags: list[str]) -> str:
     """Gets random picture from rule34.xxx"""
 
-    # Initialize connection
     client = rule34Py()
 
-    # Get pictures from host
-    result = client.search(tags=TAGS, limit=1000)
-    postId = random.randint(0,len(result))
+    search_result = client.search(tags=tags, limit=1000)
+    post_id = random.randint(0, len(search_result))
 
-    photo = result[postId].image
+    photo = search_result[post_id].image
+    if not photo:
+        raise Exception
     return photo
