@@ -27,8 +27,6 @@ async def main():
     dp.include_router(cat.router)
     dp.include_router(stats.router)
     dp.include_router(duck.router)
-    dp.include_router(r34.router)
-    dp.include_router(femboy.router)
     dp.include_router(balance.router)
     dp.include_router(message_reward.router)
 

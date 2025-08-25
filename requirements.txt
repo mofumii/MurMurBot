@@ -1,5 +1,4 @@
 aiogram
 aiosqlite
 python-dotenv
-rule34Py
 openai

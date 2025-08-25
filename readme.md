@@ -46,13 +46,6 @@ python main.py
 - bot/db/db.py create_user
 - bot/handlers/stats.py
 
-2. **Установите теги в .env для r34.py и femboy.py**
-> Список доступных тегов доступен на rule34.xxx
-```bash
-R34_TAGS
-FEMBOY_TAGS
-```
-
 ## Вклад в проект
 Pull-реквесты приветствуются!
 

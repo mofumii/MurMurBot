@@ -1,7 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [1.3] - 2025-08/15
+## [1.4] - 2025-08-25
+### Removed
+- Explicit content removed
+
+## [1.3] - 2025-08-15
 - A lot of stuff changed actually
 
 ### Added
