@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [Hotfix 1.4.1] - 2025-08-27
+### Removed
+- `Snake` module removed from bot/handlers/__init__.py
+
 ## [1.4] - 2025-08-25
 ### Removed
 - Explicit content removed
